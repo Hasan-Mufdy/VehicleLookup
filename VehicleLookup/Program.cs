@@ -1,7 +1,12 @@
+using VehicleLookup.Services;
+using VehicleLookup.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<ICarLookup, CarLookupService>();
 
 var app = builder.Build();
 
