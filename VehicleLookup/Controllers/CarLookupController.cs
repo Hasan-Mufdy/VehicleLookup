@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VehicleLookup.DTOs;
 using VehicleLookup.Services.Interfaces;
 
 namespace VehicleLookup.Controllers
@@ -16,6 +17,13 @@ namespace VehicleLookup.Controllers
             var makes = await _carLookup.GetAllMakes();
             ViewBag.Makes = makes;
             return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> GetVehicleResults(string makeId, int year)
+        {
+            var result = await _carLookup.GetVehicleTypesAndModels(int.Parse(makeId), year);
+            return View("VehicleLookupResult", result);
         }
     }
 }

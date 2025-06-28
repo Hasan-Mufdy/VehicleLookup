@@ -1,0 +1,35 @@
+﻿@model VehicleLookup.DTOs.VehicleTypesAndModelsListsDTO
+
+<h2>Available Vehicle Types</h2>
+@if (Model.TypesResults.Any())
+{
+    <ul>
+        @foreach (var type in Model.TypesResults)
+        {
+            <li>@type.VehicleTypeName</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No vehicle types found.</p>
+}
+
+<hr />
+
+<h2>Available Models</h2>
+@if (Model.ModelsResults.Any())
+{
+    <ul>
+        @foreach (var type in Model.ModelsResults)
+        {
+            <li>@type.Model_Name</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No models found.</p>
+}
+
+<p><a href="@Url.Action("Index", "CarLookup")">Back</a></p>
