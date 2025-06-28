@@ -1,1 +1,18 @@
-﻿
+﻿@using VehicleLookup.DTOs
+@{
+    ViewBag.Title = "Car Lookup";
+    var makes = ViewBag.Makes as List<MakeDetailsDTO>;
+}
+
+<form id="carLookupForm">
+    <label for="makeSelect">Make:</label>
+    <select id="makeSelect" name="makeId" required>
+        <option value=""></option>
+        @foreach (var make in makes)
+        {
+            <option value="@make.Make_ID">@make.Make_Name</option>
+        }
+    </select>
+
+</form>
+
