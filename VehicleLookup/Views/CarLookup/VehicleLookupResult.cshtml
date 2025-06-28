@@ -1,35 +1,68 @@
 ﻿@model VehicleLookup.DTOs.VehicleTypesAndModelsListsDTO
-
-<h2>Available Vehicle Types</h2>
-@if (Model.TypesResults.Any())
-{
-    <ul>
-        @foreach (var type in Model.TypesResults)
-        {
-            <li>@type.VehicleTypeName</li>
-        }
-    </ul>
-}
-else
-{
-    <p>No vehicle types found.</p>
+@{
+    ViewBag.Title = "Vehicle Lookup Results";
 }
 
-<hr />
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Vehicle Lookup Results</h2>
 
-<h2>Available Models</h2>
-@if (Model.ModelsResults.Any())
-{
-    <ul>
-        @foreach (var type in Model.ModelsResults)
-        {
-            <li>@type.Model_Name</li>
-        }
-    </ul>
-}
-else
-{
-    <p>No models found.</p>
-}
+    <div class="row">
+        <!-- Types -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Vehicle Types</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.TypesResults.Any())
+                    {
+                        <ul class="list-group">
+                            @foreach (var type in Model.TypesResults)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>@type.VehicleTypeName</span>
+                                    <span class="badge bg-secondary">ID: @type.VehicleTypeId</span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No vehicle types found.</p>
+                    }
+                </div>
+            </div>
+        </div>
 
-<p><a href="@Url.Action("Index", "CarLookup")">Back</a></p>
+        <!-- Models -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Vehicle Models</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.ModelsResults.Any())
+                    {
+                        <ul class="list-group">
+                            @foreach (var type in Model.ModelsResults)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>@type.Model_Name</span>
+                                    <span class="badge bg-secondary">Model ID: @type.Model_ID</span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No vehicle models found.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="@Url.Action("Index", "CarLookup")">Back</a>
+    </div>
+</div>
