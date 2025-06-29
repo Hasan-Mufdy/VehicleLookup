@@ -8,6 +8,14 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddHttpClient<ICarLookup, CarLookupService>();
 
+//builder.WebHost.UseUrls("http://0.0.0.0:80");
+var isDocker = Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") == "true";
+
+if (isDocker)
+{
+    builder.WebHost.UseUrls("http://0.0.0.0:80");
+}
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
