@@ -32,7 +32,7 @@ The project uses the following APIs:
 
 ## Run the Application using docker container
 
-- build docker container:
+- build docker container (run commands from the root folder of the project):
 ```
 docker build -t vehiclelookup -f VehicleLookup/Dockerfile .
 ```
