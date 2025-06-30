@@ -34,7 +34,7 @@ The project uses the following APIs:
 
 - build docker container:
 ```
-docker build -t vehiclelookup .
+docker build -t vehiclelookup -f VehicleLookup/Dockerfile .
 ```
 - run docker container:
 ```
