@@ -1,6 +1,6 @@
 # Stage 1: Build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+WORKDIR /src
 
 # Copy the entire repo including the solution and project files
 COPY ../VehicleLookup.sln ../
