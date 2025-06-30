@@ -2,18 +2,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-# Copy .sln and project files
-COPY VehicleLookup/*.csproj ./VehicleLookup/
-COPY *.sln .
+# Copy the entire repo including the solution and project files
+COPY ../VehicleLookup.sln ../
+COPY . ./
 
-# Restore dependencies
-RUN dotnet restore VehicleLookup/VehicleLookup.csproj
-
-# Copy all project files
-COPY . .
-
-# Publish the app
-WORKDIR /src/VehicleLookup
+# Restore and build
+RUN dotnet restore ../VehicleLookup.sln
 RUN dotnet publish VehicleLookup.csproj -c Release -o /app/publish
 
 # Stage 2: Runtime
