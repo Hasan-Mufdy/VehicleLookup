@@ -2,8 +2,9 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-# Copy .csproj file
+# Copy .sln and project files
 COPY VehicleLookup/*.csproj ./VehicleLookup/
+COPY *.sln .
 
 # Restore dependencies
 RUN dotnet restore VehicleLookup/VehicleLookup.csproj
